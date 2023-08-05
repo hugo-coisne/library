@@ -1,0 +1,21 @@
+body {
+    display:grid;
+    grid-template-areas: "table form";
+    grid-template-columns: 2fr 1fr;
+    gap:20px;
+}
+
+table, td, th {
+    border: solid 1px black;
+    border-collapse: collapse;
+    padding:3px;
+}
+
+table {
+    grid-area: table;
+}
+
+form {
+    grid-area:form;
+    display:grid;
+}

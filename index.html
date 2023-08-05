@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Livre</th>
+        <th>N pages</th>
+        <th>Read?</th>
+        <th>Toggle Read</th>
+        <th>Delete from library</th>
+      </tr>
+      <tr>
+        <td>sample</td>
+        <td>100</td>
+        <td>yes</td>
+        <td><button>Toggle</button></td>
+        <td><button>Delete</button></td>
+      </tr>
+    </table>
+    <form action="">
+      <input type="text" id="btitle" placeholder="Title" />
+      <input type="text" id="bauthor" placeholder="Author" />
+      <input type="number" id="bnpages" placeholder="Number of pages" />
+      <label for="bread">Read?<input type="checkbox" id="bread" /></label>
+      <button type="submit">Add new book to library</button>
+    </form>
+  </body>
+</html>

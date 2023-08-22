@@ -26,44 +26,66 @@ library = [
 
 const table = document.querySelector("tbody");
 
-for (let i in library) {
-  const book = document.createElement("tr");
-  for (let j in library[i]) {
-    if (j == "read") {
-      continue;
+function displayLibrary() {
+  for (let i in library) {
+    const book = document.createElement("tr");
+    function datacells() {
+      for (let j in library[i]) {
+        if (j == "read") {
+          continue;
+        }
+        const td = document.createElement("td");
+        td.innerHTML = library[i][j];
+        book.appendChild(td);
+      }
     }
-    const td = document.createElement("td");
-    td.innerHTML = library[i][j];
-    book.appendChild(td);
+    datacells();
+    function toggleReadCell() {
+      const toggle = document.createElement("button");
+      const td2 = document.createElement("td");
+      td2.classList = "but";
+      toggle.innerHTML = library[i].read;
+      toggle.type = "button";
+      toggle.onclick = function () {
+        let read = Array.from(this.parentNode.parentNode.children)[3]
+          .children[0];
+        if (read.innerText === "yes") {
+          read.innerText = "no";
+        } else {
+          read.innerText = "yes";
+        }
+      };
+      td2.appendChild(toggle);
+      book.appendChild(td2);
+    }
+    toggleReadCell();
+
+    function deleteCell() {
+      const deleter = document.createElement("button");
+      const td3 = document.createElement("td");
+      td3.classList = "but";
+      deleter.innerText = "Delete";
+      deleter.onclick = function () {
+        let bbook = this.parentNode.parentNode;
+        let tbody = bbook.parentNode;
+        bbook.remove();
+      };
+
+      td3.appendChild(deleter);
+      book.appendChild(td3);
+      table.appendChild(book);
+    }
+    deleteCell();
   }
-
-  const toggle = document.createElement("button");
-  const td2 = document.createElement("td");
-  td2.classList = "but";
-  toggle.innerHTML = library[i].read;
-  toggle.type = "button";
-  toggle.onclick = function () {
-    let read = Array.from(this.parentNode.parentNode.children)[3].children[0];
-    if (read.innerText === "yes") {
-      read.innerText = "no";
-    } else {
-      read.innerText = "yes";
-  };
 }
-  td2.appendChild(toggle);
-  book.appendChild(td2);
+displayLibrary();
 
-  const deleter = document.createElement("button");
-  const td3 = document.createElement("td");
-  td3.classList = "but";
-  deleter.innerText = "Delete";
-  deleter.onclick = function () {
-    let bbook = this.parentNode.parentNode;
-    let tbody = bbook.parentNode;
-    bbook.remove();
-  };
-
-  td3.appendChild(deleter);
-  book.appendChild(td3);
-  table.appendChild(book);
+function submit() {
+  const title = document.querySelector("#btitle");
+  const author = document.querySelector("#bauthor");
+  const pn = document.querySelector("#bnpages");
+  const read = document.querySelector("#bread");
+  const b = new Book(title.value, author.value, pn.value, read.checked);
+  library += b;
+  displayLibrary();
 }

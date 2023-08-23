@@ -38,10 +38,22 @@ td:nth-child(3) {
   padding: 0;
 }
 
+.del button:hover {
+  color:red;
+}
+
+.toggle button:hover{
+  font-weight:900;
+}
+
 form {
   display: grid;
+}
 
+#formbox {
+  display:grid;
   max-height: 200px;
   min-width: 25%;
-  max-width: 500px;
+  max-width: 700px;
+  grid-template-rows:5fr 1fr;
 }

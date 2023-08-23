@@ -11,22 +11,20 @@ library = [
   new Book("The Hobbit", "Tolkien", 1000, "no"),
   new Book("Dune", "Herbert", 1019, "no"),
   new Book("Harry Potter", "J.K. Rowling", 400, "yes"),
-  new Book("The Hobbit", "Tolkien", 1000, "no"),
-  new Book("Dune", "Herbert", 1019, "no"),
-  new Book("Harry Potter", "J.K. Rowling", 400, "yes"),
-  new Book("The Hobbit", "Tolkien", 1000, "no"),
-  new Book("Dune", "Herbert", 1019, "no"),
-  new Book("Harry Potter", "J.K. Rowling", 400, "yes"),
-  new Book("The Hobbit", "Tolkien", 1000, "no"),
-  new Book("Dune", "Herbert", 1019, "no"),
-  new Book("Harry Potter", "J.K. Rowling", 400, "yes"),
-  new Book("The Hobbit", "Tolkien", 1000, "no"),
-  new Book("Dune", "Herbert", 1019, "no"),
 ];
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
 
 const table = document.querySelector("tbody");
 
 function displayLibrary() {
+  while (table.children > 1) {
+    table.lastChild.remove;
+  }
   for (let i in library) {
     const book = document.createElement("tr");
     function datacells() {
@@ -43,7 +41,7 @@ function displayLibrary() {
     function toggleReadCell() {
       const toggle = document.createElement("button");
       const td2 = document.createElement("td");
-      td2.classList = "but";
+      td2.classList = "but toggle";
       toggle.innerHTML = library[i].read;
       toggle.type = "button";
       toggle.onclick = function () {
@@ -63,19 +61,20 @@ function displayLibrary() {
     function deleteCell() {
       const deleter = document.createElement("button");
       const td3 = document.createElement("td");
-      td3.classList = "but";
+      td3.classList = "but del";
       deleter.innerText = "Delete";
       deleter.onclick = function () {
         let bbook = this.parentNode.parentNode;
-        let tbody = bbook.parentNode;
+        
+        console.log(bbook);
         bbook.remove();
       };
 
       td3.appendChild(deleter);
       book.appendChild(td3);
-      table.appendChild(book);
     }
     deleteCell();
+    table.appendChild(book);
   }
 }
 displayLibrary();
@@ -85,7 +84,11 @@ function submit() {
   const author = document.querySelector("#bauthor");
   const pn = document.querySelector("#bnpages");
   const read = document.querySelector("#bread");
-  const b = new Book(title.value, author.value, pn.value, read.checked);
-  library += b;
+  let r = "yes";
+  if (!read) {
+    let r = "no";
+  }
+  const b = new Book(title.value, author.value, pn.value, r);
+  library.push(b);
   displayLibrary();
 }

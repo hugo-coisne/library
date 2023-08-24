@@ -10,9 +10,9 @@ function Book(title, author, npages, read) {
 }
 
 library = [
-  new Book("The Hobbit", "Tolkien", 1000, "no"),
-  new Book("Dune", "Herbert", 1019, "no"),
-  new Book("Harry Potter", "J.K. Rowling", 400, "yes"),
+  new Book("lmao", "Nice", 69, "yes"),
+  new Book("weed", "snoop dogg", 420, "no"),
+  new Book("main kampf", "lil hitler", 1938, "yes"),
 ];
 
 function removeAllChildNodes(parent) {

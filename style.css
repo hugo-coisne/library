@@ -1,19 +1,15 @@
 body {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
   gap: 20px;
 }
 
-table,
+tbody,
 td,
 th {
   border: solid 1px black;
   border-collapse: collapse;
   padding: 3px;
-}
-
-table tbody {
-  min-width: 500px;
 }
 
 tr {
@@ -39,11 +35,11 @@ td:nth-child(3) {
 }
 
 .del button:hover {
-  color:red;
+  color: red;
 }
 
-.toggle button:hover{
-  font-weight:900;
+.toggle button:hover {
+  font-weight: 900;
 }
 
 form {
@@ -51,9 +47,9 @@ form {
 }
 
 #formbox {
-  display:grid;
+  display: grid;
   max-height: 200px;
   min-width: 25%;
   max-width: 700px;
-  grid-template-rows:5fr 1fr;
+  grid-template-rows: 5fr 1fr;
 }
